@@ -1,8 +1,9 @@
 # aigents
 
-Reusable GitHub Copilot **custom agents** — a set of code-reviewer personas (security,
-performance, data science, DevOps, accessibility) defined in
-[`.github/agents/`](.github/agents/README.md).
+Reusable GitHub Copilot **reviewer personas** for delegated reviews and native
+Copilot PR reviews. The personas are defined as custom agents in
+[`.github/agents/`](.github/agents/README.md), with a combined review skill in
+[`.github/skills/code-review/`](.github/skills/code-review/SKILL.md).
 
 ## Install
 
@@ -14,10 +15,14 @@ Copy the desired `.md` file(s) from `.github/agents/` into:
 
 ## Use
 
-- **GitHub.com**: pick the agent from the agent picker when delegating a task or
-  requesting a review from Copilot.
+- **Native GitHub PR review**: request Copilot as a reviewer. Copilot code review
+  can use the repository's `code-review` skill, but does not provide a custom-agent
+  picker for `.github/agents/*.md`.
+- **Delegated GitHub.com task**: pick a custom agent from the agent picker and ask it
+  to review the pull request.
 - **VS Code**: choose it from the Chat agent picker.
 - **Copilot CLI**: `copilot --agent <name>` (e.g. `copilot --agent security-reviewer`).
 
-See [`.github/agents/README.md`](.github/agents/README.md) for the full list of personas,
-the frontmatter format, and how to write additional ones.
+See [`.github/agents/README.md`](.github/agents/README.md) for the full list of
+personas and custom-agent format. See the
+[review skill](.github/skills/code-review/SKILL.md) for the native PR-review path.

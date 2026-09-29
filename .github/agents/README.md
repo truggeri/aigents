@@ -3,16 +3,18 @@
 Each file here is a GitHub Copilot **custom agent**: YAML frontmatter plus a Markdown
 prompt that defines one reviewer persona.
 
-## Why custom agents and not instructions or skills
+## Custom agents and native PR review
 
 | Option | Path | Behavior |
 | --- | --- | --- |
-| **Custom agent** | `.github/agents/<name>.md` | A selectable persona. You pick which reviewer runs. Works on GitHub.com, VS Code, and Copilot CLI. |
+| **Custom agent** | `.github/agents/<name>.md` | A selectable persona for delegated tasks and interactive agent sessions. Works on GitHub.com, VS Code, and Copilot CLI. |
 | Custom instructions | `.github/copilot-instructions.md`, `.github/instructions/*.instructions.md` | Always applied (optionally path-scoped). Not selectable, so it cannot express distinct personas. |
-| Skills | Agent-side capability packages | Not a first-party GitHub code review surface. |
+| **Agent skill** | `.github/skills/code-review/SKILL.md` | Automatically available to native Copilot PR review and other supported agent experiences. |
 
-Since each persona should be chosen per pull request, custom agents are the correct
-construct.
+Native Copilot PR review does not support selecting a `.github/agents/*.md` persona
+from the review request flow. The combined `code-review` skill is therefore the
+native PR-review entry point; the individual custom agents remain useful when a
+reviewer can be selected explicitly.
 
 ## Installing
 
@@ -20,13 +22,18 @@ Copy the `.md` files into one of:
 
 - `.github/agents/` in a single repository — available to that repository.
 - `/agents/` in your organization's `.github` or `.github-private` repository — available org-wide.
+- `.github/skills/code-review/SKILL.md` in a repository — available to native Copilot
+  PR review for that repository.
 
 The filename (minus `.md`) is the agent's identifier and is what deduplicates repository,
 organization, and enterprise definitions, with the most local winning.
 
 ## Using
 
-- **GitHub.com**: select the agent when delegating a task or requesting a review from Copilot.
+- **Native GitHub PR review**: request Copilot as a reviewer; it can use the
+  repository's `code-review` skill, but the review request does not offer a custom
+  agent picker.
+- **Delegated GitHub.com task**: select an individual agent and ask it to review.
 - **VS Code**: choose it from the agent picker in Chat.
 - **Copilot CLI**: `copilot --agent security-reviewer`.
 
