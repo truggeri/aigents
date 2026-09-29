@@ -13,6 +13,23 @@ Copy the desired `.md` file(s) from `.github/agents/` into:
 - `/agents/` of your organization's `.github` or `.github-private` repository, to make
   them available org-wide.
 
+### Personal install (local machine or Codespaces)
+
+`install.sh` symlinks the agents and skills into `~/.copilot/agents` and
+`~/.copilot/skills`, where Copilot CLI and VS Code load personal customizations:
+
+```sh
+git clone https://github.com/truggeri/aigents && ./aigents/install.sh
+```
+
+Links point back into the clone, so `git pull` picks up updates. Existing non-symlink
+files are left untouched.
+
+To install into every new codespace, go to
+[Codespaces settings](https://github.com/settings/codespaces), enable
+**Automatically install dotfiles**, and select this repository. Codespaces clones it
+and runs `install.sh` on creation.
+
 ## Use
 
 - **Native GitHub PR review**: request Copilot as a reviewer. Copilot code review
