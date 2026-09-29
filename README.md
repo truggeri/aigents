@@ -9,8 +9,8 @@ performance, data science, DevOps, accessibility) defined in
 Copy the desired `.md` file(s) from `.github/agents/` into:
 
 - `.github/agents/` of a target repository, to make them available there, or
-- `.github/agents/` of your organization's `.github` repository, to make them available
-  org-wide.
+- `/agents/` of your organization's `.github` or `.github-private` repository, to make
+  them available org-wide.
 
 ## Use
 

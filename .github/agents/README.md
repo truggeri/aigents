@@ -19,7 +19,7 @@ construct.
 Copy the `.md` files into one of:
 
 - `.github/agents/` in a single repository — available to that repository.
-- `.github/agents/` in your organization's `.github` repository — available org-wide.
+- `/agents/` in your organization's `.github` or `.github-private` repository — available org-wide.
 
 The filename (minus `.md`) is the agent's identifier and is what deduplicates repository,
 organization, and enterprise definitions, with the most local winning.
